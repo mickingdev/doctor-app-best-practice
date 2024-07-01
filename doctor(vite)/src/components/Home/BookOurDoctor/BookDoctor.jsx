@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./BookDoctor.css";
 import { Link } from "react-router-dom";
-import { useGetDoctorsQuery } from "../../../redux/api/doctorApi";
 import {
   FaLocationArrow,
   FaCheckCircle,
@@ -20,9 +19,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
+import { getDoctors } from "../../../api/doctorApi";
+import { useQuery } from "react-query";
 
 const BookDoctor = () => {
-  const { data, isError, isLoading } = useGetDoctorsQuery({ limit: 10 });
+  const { data, isError, isLoading } = useQuery(['getDoctorDatas',{ limit: 10 }], getDoctors)
   const doctors = data?.doctors;
   const [
     addFavourite,
