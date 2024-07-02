@@ -1,10 +1,11 @@
 import './index.css';
 import { FaFacebookSquare, FaInstagramSquare, FaLinkedin } from "react-icons/fa";
 import { Empty } from 'antd';
-import { useGetDoctorsQuery } from '../../../redux/api/doctorApi';
+import { getDoctors } from '../../../api/doctorApi';
+import { useQuery } from 'react-query';
 
 const OurDoctors = () => {
-    const { data, isLoading, isError } = useGetDoctorsQuery({ limit: 4 });
+    const { data, isLoading, isErros } = useQuery(['getDoctorDatas',{limit: 4}], getDoctors)
     const doctors = data?.doctors;
 
     let content = null;

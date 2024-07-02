@@ -8,6 +8,8 @@ import {
   FaDollarSign,
   FaClock,
 } from "react-icons/fa";
+import { getDoctors } from "../../../api/doctorApi";
+import { useQuery } from "react-query";
 import { useAddFavouriteMutation } from "../../../redux/api/favouriteApi";
 import StarRatings from "react-star-ratings";
 import { message } from "antd";
@@ -19,11 +21,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
-import { getDoctors } from "../../../api/doctorApi";
-import { useQuery } from "react-query";
 
 const BookDoctor = () => {
-  const { data, isError, isLoading } = useQuery(['getDoctorDatas',{ limit: 10 }], getDoctors)
+  const { data, isError, isLoading } = useQuery(
+    ["getDoctorDatas", { limit: 10 }],
+    getDoctors
+  );
   const doctors = data?.doctors;
   const [
     addFavourite,
