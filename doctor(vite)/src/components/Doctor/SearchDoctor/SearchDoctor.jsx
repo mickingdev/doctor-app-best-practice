@@ -57,8 +57,8 @@ const SearchDoctor = () => {
     ["getDoctorDatas", { ...query }],
     getDoctors
   );
-  const doctorsData = data?.doctors;
-  const meta = data?.meta;
+  const doctorsData = data?.data?.data?.data || [];
+  const meta = data?.data?.data?.meta || {};
 
   //what to render
   let content = null;

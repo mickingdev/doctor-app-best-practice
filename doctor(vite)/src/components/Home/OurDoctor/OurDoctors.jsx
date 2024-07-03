@@ -5,7 +5,7 @@ import { getDoctors } from '../../../api/doctorApi';
 import { useQuery } from 'react-query';
 
 const OurDoctors = () => {
-    const { data, isLoading, isErros } = useQuery(['getDoctorDatas',{limit: 4}], getDoctors)
+    const { data, isLoading, isError } = useQuery(['getDoctorDatas',{limit: 4}], getDoctors)
     const doctors = data?.doctors;
 
     let content = null;
